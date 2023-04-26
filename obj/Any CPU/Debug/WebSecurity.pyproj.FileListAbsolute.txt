@@ -1,0 +1,2 @@
+C:\Users\Janak Tripathi\OneDrive\Desktop\WebSecurity\obj\Any CPU\Debug\WebSecurity.pyproj.SuggestedBindingRedirects.cache
+C:\Users\Janak Tripathi\OneDrive\Desktop\WebSecurity\obj\Any CPU\Debug\WebSecurity.pyproj.CoreCompileInputs.cache
