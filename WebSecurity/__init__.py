@@ -4,7 +4,8 @@
 # For educational purposes only. Please never resue or misuse it for malicious purpose.
 # (Linda)Zhaohui TANG, 2023
 
-from flask import Flask, render_template,request,redirect,session
+from http.cookiejar import Cookie
+from flask import Flask, render_template,request,redirect,session,jsonify
 import sqlite3
 import os
 import hashlib
@@ -35,7 +36,7 @@ def login():
         c=conn.cursor()
         email = request.form['email']        
         password = hash(request.form['password'])
-        print("SELECT * FROM users WHERE email= ? and password= ?",(email,password))
+        print("SELECT * FROM users WHERE email= '%s'' and password='%s'' ",(email,password))
         c.execute("SELECT * FROM users WHERE email= ? and password= ? ",(email,password))
         rval=c.fetchone()
         if email == 'admin@a.com' and password == app.adminhash:
@@ -91,5 +92,5 @@ if __name__ == '__main__':
     c.execute("insert into users (email, name,password) values ('alice@alice.com','alice','"+alicehash+"')")
     c.execute("insert into users (email, name,password) values ('admin@admin.com','admin','"+hash("averysecureadminpassword")+"')")
     conn.commit()
-    app.config.update(SESSION_COOKIE_HTTPONLY=False)
+    app.config["SESSION_COOKIE_HTTPONLY"]=False
     app.run(debug=False,port=port)
