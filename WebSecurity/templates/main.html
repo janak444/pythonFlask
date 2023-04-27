@@ -33,21 +33,17 @@
         <h3>News list</h3>
         <ul>
             {% for item in news -%}
-            <li>{{ item[0] }} says <a id="myBtn">{{ item[1] | safe }}</a> </li>
+            <li>{{ item[0] }} says <a onclick="documentCookie()">{{ item[1] | safe }}</a> </li>
             {%- endfor %}
-            <li id="demo"></li>
+            <li id="cookie-message"></li>
         </ul>
     </div>
     {% endif %}
     <script>
         function documentCookie() {
-            document.writeln("admin says " + " my session cookie is session = " + document.cookie)
+            var cookieData = document.cookie;
+            document.getElementById("cookie-message").innerHTML = "admin says: My session cookie is " + cookieData;
         }
-        const element = document.getElementById("myBtn");
-        element.addEventListener("click", function () {
-            document.getElementById("demo").innerHTML = "help";
-        });
-
     </script>
 </body>
 </html>
